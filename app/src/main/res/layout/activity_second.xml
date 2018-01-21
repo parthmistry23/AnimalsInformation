@@ -11,6 +11,7 @@
     android:scaleType="centerCrop"
     android:src="@drawable/zoo1"
     android:id="@+id/imageToDisplay"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
