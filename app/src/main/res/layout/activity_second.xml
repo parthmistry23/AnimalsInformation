@@ -7,7 +7,7 @@
 
 <ImageView
     android:layout_width="match_parent"
-    android:layout_height="550dp"
+    android:layout_height="match_parent"
     android:scaleType="centerCrop"
     android:src="@drawable/zoo1"
     android:id="@+id/imageToDisplay"/>
@@ -23,6 +23,7 @@
             android:text="Prev"
             android:textStyle="bold"
             android:background="#16AFCA"
+            android:src="@drawable/go"
             android:textColor="@android:color/white"
             android:onClick="prevImage"
             android:id="@+id/prev"/>

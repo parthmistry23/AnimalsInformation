@@ -1,8 +1,5 @@
 package org.parthapp.android.animalsinformation;
 
-/**
- * Created by parth on 1/21/2018.
- */
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
