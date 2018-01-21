@@ -1,6 +1,8 @@
 package org.parthapp.android.animalsinformation;
 
-// Adding Some changes
+/**
+ * Created by parth on 1/21/2018.
+ */
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -75,5 +77,3 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
-
-
