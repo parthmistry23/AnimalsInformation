@@ -16,9 +16,11 @@ import com.parthapp.android.animalsinformation.R;
 public class SecondActivity extends AppCompatActivity {
 
     int[] images = {R.drawable.zoo, R.drawable.cobra, R.drawable.flamingo, R.drawable.peacock,
-            R.drawable.tiger, R.drawable.zebra,R.drawable.elephant};
+                    R.drawable.tiger, R.drawable.zebra, R.drawable.elephant, R.drawable.rhino,
+                    R.drawable.leopard,R.drawable.bear,R.drawable.giraffe};
     int currentImage = 1;
-    int sound_click, sound_cobra, sound_flamingo, sound_peacock, sound_tiger, sound_zebra,sound_elephant;
+    int sound_click, sound_cobra, sound_flamingo, sound_peacock, sound_tiger,
+            sound_zebra, sound_elephant, sound_rhino,sound_leopard, sound_bear, sound_giraffe;
     int num_sounds_loaded;
     boolean sounds_loaded;
     private ImageView imageToDisplay;
@@ -53,7 +55,11 @@ public class SecondActivity extends AppCompatActivity {
         sound_peacock = sp.load(this, R.raw.peacock, 4);
         sound_tiger = sp.load(this, R.raw.tiger, 5);
         sound_zebra = sp.load(this, R.raw.zebra, 6);
-        sound_elephant=sp.load(this,R.raw.elephant,7);
+        sound_elephant = sp.load(this, R.raw.elephant, 7);
+        sound_rhino = sp.load(this, R.raw.rhino, 8);
+        sound_leopard= sp.load(this,R.raw.leopard,9);
+        sound_bear= sp.load(this,R.raw.bear,10);
+        sound_giraffe = sp.load(this,R.raw.giraffe,11);
         super.onResume();
 
     }
@@ -75,7 +81,6 @@ public class SecondActivity extends AppCompatActivity {
         info = (Button) findViewById(R.id.info);
 
 
-
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,7 +89,7 @@ public class SecondActivity extends AppCompatActivity {
                 }
 
 
-                if (currentImage == 6) {
+                if (currentImage == 10) {
                     currentImage = 1;
                     imageToDisplay.setImageResource(images[currentImage]);
                     setName(currentImage);
@@ -108,7 +113,7 @@ public class SecondActivity extends AppCompatActivity {
                 }
 
                 if (currentImage == 1) {
-                    currentImage = 6;
+                    currentImage = 10;
                     imageToDisplay.setImageResource(images[currentImage]);
                     setName(currentImage);
                     return;
@@ -126,32 +131,52 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (currentImage == 1) {
                     Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
-                    intent.putExtra("URL","https://en.wikipedia.org/wiki/Cobra");
+                    intent.putExtra("URL", "https://en.wikipedia.org/wiki/Cobra");
                     startActivity(intent);
                 }
                 if (currentImage == 2) {
                     Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
-                    intent.putExtra("URL","https://en.wikipedia.org/wiki/Flamingo");
+                    intent.putExtra("URL", "https://en.wikipedia.org/wiki/Flamingo");
                     startActivity(intent);
                 }
                 if (currentImage == 3) {
                     Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
-                    intent.putExtra("URL","https://en.wikipedia.org/wiki/Peafowl");
+                    intent.putExtra("URL", "https://en.wikipedia.org/wiki/Peafowl");
                     startActivity(intent);
                 }
                 if (currentImage == 4) {
                     Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
-                    intent.putExtra("URL","https://en.wikipedia.org/wiki/Tiger");
+                    intent.putExtra("URL", "https://en.wikipedia.org/wiki/Tiger");
                     startActivity(intent);
                 }
                 if (currentImage == 5) {
                     Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
-                    intent.putExtra("URL","https://en.wikipedia.org/wiki/Zebra");
+                    intent.putExtra("URL", "https://en.wikipedia.org/wiki/Zebra");
                     startActivity(intent);
                 }
                 if (currentImage == 6) {
                     Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
-                    intent.putExtra("URL","https://en.wikipedia.org/wiki/Elephant");
+                    intent.putExtra("URL", "https://en.wikipedia.org/wiki/Elephant");
+                    startActivity(intent);
+                }
+                if (currentImage == 7) {
+                    Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
+                    intent.putExtra("URL", "https://en.wikipedia.org/wiki/Rhinoceros");
+                    startActivity(intent);
+                }
+                if (currentImage == 8) {
+                    Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
+                    intent.putExtra("URL", "https://en.wikipedia.org/wiki/Leopard");
+                    startActivity(intent);
+                }
+                if (currentImage == 9) {
+                    Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
+                    intent.putExtra("URL", "https://en.wikipedia.org/wiki/Bear");
+                    startActivity(intent);
+                }
+                if (currentImage == 10) {
+                    Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
+                    intent.putExtra("URL", "https://en.wikipedia.org/wiki/Giraffe");
                     startActivity(intent);
                 }
 
@@ -195,18 +220,62 @@ public class SecondActivity extends AppCompatActivity {
                     sp.stop(sound_elephant);
                     Toast.makeText(SecondActivity.this, "Trumpet", Toast.LENGTH_SHORT).show();
                 }
+                if (currentImage == 7) {
+                    sp.play(sound_rhino, 1, 1, 0, 0, 1);
+                    sp.stop(sound_rhino);
+                    Toast.makeText(SecondActivity.this, "Bellow", Toast.LENGTH_SHORT).show();
+                }
+                if (currentImage == 8) {
+                    sp.play(sound_leopard, 1, 1, 0, 0, 1);
+                    sp.stop(sound_leopard);
+                    Toast.makeText(SecondActivity.this, "Growling", Toast.LENGTH_SHORT).show();
+                }
+                if (currentImage == 9) {
+                    sp.play(sound_bear, 1, 1, 0, 0, 1);
+                    sp.stop(sound_bear);
+                    Toast.makeText(SecondActivity.this, "Grunting", Toast.LENGTH_SHORT).show();
+                }
+                if (currentImage == 10) {
+                    sp.play(sound_giraffe, 1, 1, 0, 0, 1);
+                    sp.stop(sound_giraffe);
+                    Toast.makeText(SecondActivity.this, "Humming", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
     }
 
     private void setName(int currentImage) {
-            if(currentImage==1){getSupportActionBar().setTitle("Cobra");}
-            if(currentImage==2){getSupportActionBar().setTitle("Flamingo");}
-            if(currentImage==3){getSupportActionBar().setTitle("Peacock");}
-            if(currentImage==4){getSupportActionBar().setTitle("Tiger");}
-            if(currentImage==5){getSupportActionBar().setTitle("Zebra");}
-            if(currentImage==6){getSupportActionBar().setTitle("Elephant");}
+        if (currentImage == 1) {
+            getSupportActionBar().setTitle("Cobra");
+        }
+        if (currentImage == 2) {
+            getSupportActionBar().setTitle("Flamingo");
+        }
+        if (currentImage == 3) {
+            getSupportActionBar().setTitle("Peacock");
+        }
+        if (currentImage == 4) {
+            getSupportActionBar().setTitle("Tiger");
+        }
+        if (currentImage == 5) {
+            getSupportActionBar().setTitle("Zebra");
+        }
+        if (currentImage == 6) {
+            getSupportActionBar().setTitle("Elephant");
+        }
+        if (currentImage == 7) {
+            getSupportActionBar().setTitle("Rhinoceros");
+        }
+        if (currentImage == 8) {
+            getSupportActionBar().setTitle("Leopard");
+        }
+        if (currentImage == 9) {
+            getSupportActionBar().setTitle("Bear");
+        }
+        if (currentImage == 10) {
+            getSupportActionBar().setTitle("Giraffe");
+        }
     }
 
 }
