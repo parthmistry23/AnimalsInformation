@@ -15,9 +15,10 @@ import com.parthapp.android.animalsinformation.R;
 
 public class SecondActivity extends AppCompatActivity {
 
-    int[] images = {R.drawable.zoo, R.drawable.cobra, R.drawable.flamingo, R.drawable.peacock, R.drawable.tiger, R.drawable.zebra};
+    int[] images = {R.drawable.zoo, R.drawable.cobra, R.drawable.flamingo, R.drawable.peacock,
+            R.drawable.tiger, R.drawable.zebra,R.drawable.elephant};
     int currentImage = 1;
-    int sound_click, sound_cobra, sound_flamingo, sound_peacock, sound_tiger, sound_zebra;
+    int sound_click, sound_cobra, sound_flamingo, sound_peacock, sound_tiger, sound_zebra,sound_elephant;
     int num_sounds_loaded;
     boolean sounds_loaded;
     private ImageView imageToDisplay;
@@ -52,7 +53,7 @@ public class SecondActivity extends AppCompatActivity {
         sound_peacock = sp.load(this, R.raw.peacock, 4);
         sound_tiger = sp.load(this, R.raw.tiger, 5);
         sound_zebra = sp.load(this, R.raw.zebra, 6);
-
+        sound_elephant=sp.load(this,R.raw.elephant,7);
         super.onResume();
 
     }
@@ -74,6 +75,7 @@ public class SecondActivity extends AppCompatActivity {
         info = (Button) findViewById(R.id.info);
 
 
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,16 +83,21 @@ public class SecondActivity extends AppCompatActivity {
                     sp.play(sound_click, 1, 1, 0, 0, 1);
                 }
 
-                if (currentImage == 5) {
+
+                if (currentImage == 6) {
                     currentImage = 1;
                     imageToDisplay.setImageResource(images[currentImage]);
+                    setName(currentImage);
                     return;
                 } else {
                     currentImage = currentImage + 1;
                     imageToDisplay.setImageResource(images[currentImage]);
+                    setName(currentImage);
                     return;
                 }
             }
+
+
         });
 
         prev.setOnClickListener(new View.OnClickListener() {
@@ -101,12 +108,14 @@ public class SecondActivity extends AppCompatActivity {
                 }
 
                 if (currentImage == 1) {
-                    currentImage = 5;
+                    currentImage = 6;
                     imageToDisplay.setImageResource(images[currentImage]);
+                    setName(currentImage);
                     return;
                 } else {
                     currentImage = currentImage - 1;
                     imageToDisplay.setImageResource(images[currentImage]);
+                    setName(currentImage);
                     return;
                 }
             }
@@ -116,28 +125,33 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (currentImage == 1) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("https://en.wikipedia.org/wiki/Cobra"));
+                    Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
+                    intent.putExtra("URL","https://en.wikipedia.org/wiki/Cobra");
                     startActivity(intent);
                 }
                 if (currentImage == 2) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("https://en.wikipedia.org/wiki/Flamingo"));
+                    Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
+                    intent.putExtra("URL","https://en.wikipedia.org/wiki/Flamingo");
                     startActivity(intent);
                 }
                 if (currentImage == 3) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("https://en.wikipedia.org/wiki/Peafowl"));
+                    Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
+                    intent.putExtra("URL","https://en.wikipedia.org/wiki/Peafowl");
                     startActivity(intent);
                 }
                 if (currentImage == 4) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("https://en.wikipedia.org/wiki/Tiger"));
+                    Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
+                    intent.putExtra("URL","https://en.wikipedia.org/wiki/Tiger");
                     startActivity(intent);
                 }
                 if (currentImage == 5) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("https://en.wikipedia.org/wiki/Zebra"));
+                    Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
+                    intent.putExtra("URL","https://en.wikipedia.org/wiki/Zebra");
+                    startActivity(intent);
+                }
+                if (currentImage == 6) {
+                    Intent intent = new Intent(SecondActivity.this, InfoActivity.class);
+                    intent.putExtra("URL","https://en.wikipedia.org/wiki/Elephant");
                     startActivity(intent);
                 }
 
@@ -176,9 +190,23 @@ public class SecondActivity extends AppCompatActivity {
                     sp.stop(sound_zebra);
                     Toast.makeText(SecondActivity.this, "Whinning", Toast.LENGTH_SHORT).show();
                 }
+                if (currentImage == 6) {
+                    sp.play(sound_elephant, 1, 1, 0, 0, 1);
+                    sp.stop(sound_elephant);
+                    Toast.makeText(SecondActivity.this, "Trumpet", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
+    }
+
+    private void setName(int currentImage) {
+            if(currentImage==1){getSupportActionBar().setTitle("Cobra");}
+            if(currentImage==2){getSupportActionBar().setTitle("Flamingo");}
+            if(currentImage==3){getSupportActionBar().setTitle("Peacock");}
+            if(currentImage==4){getSupportActionBar().setTitle("Tiger");}
+            if(currentImage==5){getSupportActionBar().setTitle("Zebra");}
+            if(currentImage==6){getSupportActionBar().setTitle("Elephant");}
     }
 
 }
